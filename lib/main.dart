@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_training/Task_3_Login_Page.dart';
 import 'package:flutter_training/task_1.dart';
-import 'package:flutter_training/task_3.dart';
+import 'package:flutter_training/task_2.dart';
 
 
 
@@ -16,7 +17,7 @@ class TrainingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginPage(),
 
 
     );
