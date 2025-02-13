@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 
-class SocialDashbord extends StatefulWidget {
-  const SocialDashbord({super.key});
+class SocialDashboard extends StatefulWidget {
+  const SocialDashboard({super.key});
 
   @override
-  State<SocialDashbord> createState() => _SocialDashbordState();
+  State<SocialDashboard> createState() => _SocialDashboardState();
 }
 
-class _SocialDashbordState extends State<SocialDashbord> {
-  int count=0;
+class _SocialDashboardState extends State<SocialDashboard> {
+  int count = 0; // عداد الإعجابات
+
+  // قائمة صور الحسابات الشخصية
+  final List<String> profileImages = List.generate(
+    6,
+        (index) => 'https://cdn-icons-png.flaticon.com/128/10050/10050042.png',
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         elevation: 0,
-        title: Center(
+        title: const Center(
           child: Text(
-              'Social Dashbord',style: TextStyle(fontSize: 25),
+            'Social Dashboard',
+            style: TextStyle(fontSize: 25),
           ),
         ),
       ),
@@ -25,221 +33,128 @@ class _SocialDashbordState extends State<SocialDashbord> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8.0
-              ),
-              child: Text(
-                'Profiles',
-                style: TextStyle(
-                  fontSize: 20,fontWeight: FontWeight.bold
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Stack(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  children: [
-                    CircleAvatar(
-                    radius:50 ,
-                    backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                  ),
-                    CircleAvatar(
-                      radius: 12.0,
-                      backgroundColor: Colors.white,
+            // عنوان القسم الأول
+            _buildSectionTitle('Profiles'),
 
-                    ),
-                    CircleAvatar(
-                      radius: 11.0,
-                      backgroundColor: Colors.green,
+            // شبكة الصور الشخصية
+            _buildProfileGrid(),
 
-                    )
-                  ]
-                ),
-                Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius:50 ,
-                        backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                      ),
-                    ]
-                ),
-                Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius:50 ,
-                        backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                      ),
-                      CircleAvatar(
-                        radius: 12.0,
-                        backgroundColor: Colors.white,
+            const SizedBox(height: 50),
 
-                      ),
-                      CircleAvatar(
-                        radius: 11.0,
-                        backgroundColor: Colors.green,
+            // عنوان المنشور المميز
+            _buildSectionTitle('Featured Post'),
 
-                      )
-                    ]
-                )
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius:50 ,
-                        backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                      ),
-                    ]
-                ),
-                Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius:50 ,
-                        backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                      ),
-                      CircleAvatar(
-                        radius: 12.0,
-                        backgroundColor: Colors.white,
+            // صورة المنشور مع العنوان
+            _buildFeaturedPost(),
 
-                      ),
-                      CircleAvatar(
-                        radius: 11.0,
-                        backgroundColor: Colors.green,
-
-                      )
-                    ]
-                ),
-                Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius:50 ,
-                        backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/128/10050/10050042.png'),
-                      ),
-
-                    ]
-                )
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8.0
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Featured Post',
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8.0
-              ),
-              child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(15)
-                )),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    Stack(
-                        alignment: Alignment.bottomLeft,
-                      children :[
-                        Image(
-                        image: NetworkImage(
-                            'https://media.istockphoto.com/id/841278554/photo/beautiful-morning-light-in-public-park-with-green-grass-field.jpg?s=612x612&w=0&k=20&c=rXOM3Uq9kPbpM5IWnCAnffHOP8KKpVKCJDMuNBlTNls='
-                        ),
-                          width: 330,
-                        height: 270,
-                        fit: BoxFit.cover,
-                      ),
-                       Container(
-                         padding: EdgeInsets.all(10),
-                           width: 330,
-                         color: Colors.black.withAlpha(100),
-                           child: Text('Amazing View!',style: TextStyle(color: Colors.white,fontSize: 25),)
-                       ),
-                      ]
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8.0,
-                right: 8.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Likes: '+count.toString(),style:TextStyle(fontSize: 15)),
-
-                  Row(
-                    children: [
-                      Container(
-                        child: IconButton(
-                              onPressed: (){
-                                setState(() {
-                                  count++;
-                                });
-                              },
-                              icon:
-
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 8.0,
-
-                                ),
-                                child: Icon(Icons.thumb_up_alt),
-                              )
-                          ),
-                      ),
-                      Text('Like'),
-                    ],
-                  ),
-
-
-                ],
-              ),
-
-            )
+            // قسم الإعجابات
+            _buildLikeSection(),
           ],
-
-
         ),
       ),
+    );
+  }
 
+  // **ودجت لإنشاء عنوان القسم**
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
 
+  // **ودجت لإنشاء شبكة الصور الشخصية**
+  Widget _buildProfileGrid() {
+    return Wrap(
+      spacing: 20, // المسافة بين الصور
+      runSpacing: 20, // المسافة بين الصفوف
+      alignment: WrapAlignment.center,
+      children: profileImages.map((image) => _buildProfileAvatar(image)).toList(),
+    );
+  }
 
+  // **ودجت لإنشاء صورة حساب شخصي**
+  Widget _buildProfileAvatar(String imageUrl) {
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundImage: NetworkImage(imageUrl),
+        ),
+        const CircleAvatar(
+          radius: 12.0,
+          backgroundColor: Colors.white,
+        ),
+        const CircleAvatar(
+          radius: 11.0,
+          backgroundColor: Colors.green, // تعني أن المستخدم "متصل"
+        ),
+      ],
+    );
+  }
+
+  // **ودجت لإنشاء المنشور المميز**
+  Widget _buildFeaturedPost() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            Image.network(
+              'https://media.istockphoto.com/id/841278554/photo/beautiful-morning-light-in-public-park-with-green-grass-field.jpg?s=612x612&w=0&k=20&c=rXOM3Uq9kPbpM5IWnCAnffHOP8KKpVKCJDMuNBlTNls=',
+              width: double.infinity,
+              height: 270,
+              fit: BoxFit.cover,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              width: double.infinity,
+              color: Colors.black.withOpacity(0.5),
+              child: const Text(
+                'Amazing View!',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // **ودجت لإنشاء قسم الإعجابات**
+  Widget _buildLikeSection() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // عرض عدد الإعجابات
+          Text(
+            'Likes: $count',
+            style: const TextStyle(fontSize: 15),
+          ),
+          // زر الإعجاب
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    count++;
+                  });
+                },
+                icon: const Icon(Icons.thumb_up_alt),
+              ),
+              const Text('Like'),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
